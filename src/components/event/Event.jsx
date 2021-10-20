@@ -1,18 +1,28 @@
-import React from "react";
+import React, { useState } from 'react';
+import EventDelete from './EventDelete.jsx';
 
-import "./event.scss";
+import './event.scss';
 
-const Event = ({ height, marginTop, title, time }) => {
-  const eventStyle = {
-    height,
-    marginTop,
+const Event = ({ height, marginTop, title, time, deleteEventData, id }) => {
+  const [showButtonDelete, setShowButtonDelete] = useState(false);
+
+  const toggleShowDelete = () => {
+    setShowButtonDelete(!showButtonDelete);
   };
-
   return (
-    <div style={eventStyle} className="event">
-      <div className="event__title">{title}</div>
-      <div className="event__time">{time}</div>
-    </div>
+    <>
+      <div style={{ height, marginTop }} className="event">
+        <div className="event__title" onClick={toggleShowDelete}>
+          {title}
+        </div>
+        <div className="event__time" onClick={toggleShowDelete}>
+          {time}
+        </div>
+        {showButtonDelete && (
+          <EventDelete id={id} deleteEventData={deleteEventData} />
+        )}
+      </div>
+    </>
   );
 };
 
