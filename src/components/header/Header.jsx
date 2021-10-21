@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import moment from 'moment';
-import Modal from '../modal/Modal.jsx';
+import Modal from '../modal/Modal';
 
 import './header.scss';
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import EventDelete from './EventDelete.jsx';
+import EventDelete from './EventDelete';
 
 import './event.scss';
 

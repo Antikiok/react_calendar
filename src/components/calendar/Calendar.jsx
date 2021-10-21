@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React from 'react';
 
-import Navigation from './../navigation/Navigation';
+import Navigation from '../navigation/Navigation';
 import Week from '../week/Week';
 import Sidebar from '../sidebar/Sidebar';
 
