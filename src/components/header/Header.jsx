@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
 import moment from 'moment';
+import Modal from '../modal/Modal.jsx';
 
 import './header.scss';
 
@@ -8,8 +9,14 @@ const Header = ({
   togglePrevWeek,
   setPresentWeek,
   handleWeeks,
-  createModal,
+  onCreateEvent,
 }) => {
+  const [isModalVisible, setIsModalVisible] = useState(false);
+
+  const toggleModal = () => {
+    setIsModalVisible(!isModalVisible);
+  };
+
   const firstDayOfWeek = moment(handleWeeks[0]).format('MMM');
   const lastDayOfWeek = moment(handleWeeks[6]).format('MMM');
 
@@ -20,7 +27,7 @@ const Header = ({
 
   return (
     <header className="header">
-      <button className="button create-event-btn" onClick={createModal}>
+      <button className="button create-event-btn" onClick={toggleModal}>
         <i className="fas fa-plus create-event-btn__icon"></i>Create
       </button>
       <div className="navigation">
@@ -44,6 +51,9 @@ const Header = ({
         </button>
         <span className="navigation__displayed-month">{currentMonth}</span>
       </div>
+      {isModalVisible && (
+        <Modal toggleModal={toggleModal} onCreateEvent={onCreateEvent} />
+      )}
     </header>
   );
 };

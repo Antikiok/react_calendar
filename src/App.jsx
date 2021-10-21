@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Header from './components/header/Header.jsx';
-import Modal from './components/modal/Modal.jsx';
 import Calendar from './components/calendar/Calendar.jsx';
-import events from './gateway/events';
 import {
   createEvent,
   fetchEventLists,
@@ -18,7 +16,6 @@ const App = () => {
   const sevenDays = 604800000;
 
   const [handleWeeks, setHandleWeeks] = useState(weekDates);
-  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const [eventsList, setEventsList] = useState([]);
 
@@ -72,14 +69,6 @@ const App = () => {
     setHandleWeeks(weekDates);
   };
 
-  const createModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const closeModal = () => {
-    setIsModalVisible(false);
-  };
-
   return (
     <>
       <Header
@@ -87,12 +76,9 @@ const App = () => {
         togglePrevWeek={togglePrevWeek}
         toggleNextWeek={toggleNextWeek}
         setPresentWeek={setPresentWeek}
-        createModal={createModal}
+        onCreateEvent={onCreateEvent}
       />
 
-      {isModalVisible && (
-        <Modal closeModal={closeModal} onCreateEvent={onCreateEvent} />
-      )}
       <Calendar
         handleWeeks={handleWeeks}
         eventsList={eventsList}

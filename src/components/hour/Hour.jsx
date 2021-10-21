@@ -5,7 +5,13 @@ import { formatMins } from '../../../src/utils/dateUtils.js';
 
 import './hour.scss';
 
-const Hour = ({ dataHour, hourEvents, eventsList, deleteEventData }) => {
+const Hour = ({
+  dataHour,
+  hourEvents,
+  eventsList,
+  deleteEventData,
+  dataDay,
+}) => {
   return (
     <div className="calendar__time-slot" data-time={dataHour + 1}>
       {/* if no events in the current hour nothing will render here */}

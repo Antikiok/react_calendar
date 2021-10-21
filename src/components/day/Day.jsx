@@ -1,5 +1,6 @@
 import React from 'react';
 import Hour from '../hour/Hour';
+import TodayLine from './TodayLine';
 
 import './day.scss';
 
@@ -7,6 +8,8 @@ const Day = ({ dataDay, dayEvents, eventsList, deleteEventData }) => {
   const hours = Array(24)
     .fill()
     .map((val, index) => index);
+
+  const isToday = dataDay === new Date().getDate();
 
   return (
     <div className="calendar__day" data-day={dataDay}>
@@ -23,9 +26,11 @@ const Day = ({ dataDay, dayEvents, eventsList, deleteEventData }) => {
             hourEvents={hourEvents}
             eventsList={eventsList}
             deleteEventData={deleteEventData}
+            dataDay={dataDay}
           />
         );
       })}
+      {isToday && <TodayLine />}
     </div>
   );
 };

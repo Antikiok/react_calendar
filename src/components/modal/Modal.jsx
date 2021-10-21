@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
-import events from '../../../src/gateway/events.js';
 
 import './modal.scss';
 
-const Modal = ({ onCreateEvent, closeModal }) => {
+const Modal = ({ onCreateEvent, toggleModal }) => {
   const [eventFormData, setEventFormData] = useState({
     title: '',
     date: '',
@@ -26,7 +25,7 @@ const Modal = ({ onCreateEvent, closeModal }) => {
     <div className="modal overlay">
       <div className="modal__content">
         <div className="create-event">
-          <button className="create-event__close-btn" onClick={closeModal}>
+          <button className="create-event__close-btn" onClick={toggleModal}>
             +
           </button>
           <form
