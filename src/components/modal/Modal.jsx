@@ -13,7 +13,7 @@ const Modal = ({ onCreateEvent, toggleModal }) => {
 
   const { title, date, startTime, endTime, description } = eventFormData;
 
-  const handleEventForm = (e) => {
+  const handleEventForm = e => {
     const { name, value } = e.target;
     setEventFormData({
       ...eventFormData,
@@ -28,10 +28,7 @@ const Modal = ({ onCreateEvent, toggleModal }) => {
           <button className="create-event__close-btn" onClick={toggleModal}>
             +
           </button>
-          <form
-            className="event-form"
-            onSubmit={(e) => onCreateEvent(e, eventFormData)}
-          >
+          <form className="event-form" onSubmit={e => onCreateEvent(e, eventFormData)}>
             <input
               type="text"
               value={title}
@@ -71,7 +68,7 @@ const Modal = ({ onCreateEvent, toggleModal }) => {
               className="event-form__field"
               onChange={handleEventForm}
             ></textarea>
-            <button type="submit" className="event-form__submit-btn">
+            <button type="submit" className="event-form__submit-btn" onClick={toggleModal}>
               Submit Create
             </button>
           </form>
