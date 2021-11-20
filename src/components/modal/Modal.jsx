@@ -28,7 +28,11 @@ const Modal = ({ onCreateEvent, toggleModal }) => {
           <button className="create-event__close-btn" onClick={toggleModal}>
             +
           </button>
-          <form className="event-form" onSubmit={e => onCreateEvent(e, eventFormData)}>
+          <form
+            className="event-form"
+            // onSubmit={toggleModal}
+            onSubmit={e => onCreateEvent(e, eventFormData)}
+          >
             <input
               type="text"
               value={title}
